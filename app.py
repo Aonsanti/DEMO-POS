@@ -53,7 +53,19 @@ notify_app_page = st.Page(
     icon=":material/notifications:",
 )
 
+stock2d_page = st.Page(
+    page="pages/stock2d.py",
+    title="Stock 2D",
+    icon=":material/grid_view:",
+)
+
+stock3d_page = st.Page(
+    page="pages/stock3d.py",
+    title="Stock 3D",
+    icon=":material/view_in_ar:",
+)
+
 pg = st.navigation(
-    pages=[dashboard_page, shelf_management_page, web_scraper_page, notify_app_page]
+    pages=[dashboard_page, shelf_management_page, web_scraper_page, notify_app_page, stock2d_page, stock3d_page]
 )
 pg.run()
