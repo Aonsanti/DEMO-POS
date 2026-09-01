@@ -150,7 +150,7 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
 /* ── Item Grid Modal ── */
 #item-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:1100;align-items:center;justify-content:center}
 #item-overlay.show{display:flex}
-#item-modal{background:#1e293b;border:1px solid #334155;border-radius:20px;width:min(740px,96vw);max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 28px 80px rgba(0,0,0,.8)}
+#item-modal{background:#1e293b;border:1px solid #334155;border-radius:20px;width:min(760px,96vw);max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 28px 80px rgba(0,0,0,.8)}
 #item-modal-header{padding:16px 22px 12px;border-bottom:1px solid #334155;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 #item-modal-header h3{font-size:15px;font-weight:700;color:#f97316}
 .close-btn{background:none;border:none;color:#64748b;font-size:18px;cursor:pointer;padding:2px 6px;border-radius:4px;transition:.15s}
@@ -158,44 +158,61 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
 #item-modal-body{flex:1;overflow:auto;padding:18px 22px}
 #item-grid-el{display:grid;gap:10px}
 .item-cell{
-  border-radius:10px;padding:10px 7px;cursor:pointer;
-  transition:.15s;border:2px solid transparent;
+  border-radius:12px;padding:10px 8px;cursor:pointer;
+  transition:.18s ease;border:2px solid transparent;
   display:flex;flex-direction:column;align-items:center;
-  position:relative;
+  position:relative;background:rgba(15,23,42,.6);
 }
-.item-cell:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.item-cell.cell-green{background:rgba(16,185,129,.18)}
-.item-cell.cell-orange{background:rgba(249,115,22,.18)}
-.item-cell.cell-red{background:rgba(239,68,68,.18)}
-.item-cell.cell-empty{background:rgba(30,41,59,.5)}
+.item-cell:hover{transform:translateY(-3px);border-color:rgba(249,115,22,.5);box-shadow:0 10px 26px rgba(0,0,0,.55)}
+.item-cell.cell-green{background:rgba(16,185,129,.14);border-color:rgba(16,185,129,.25)}
+.item-cell.cell-orange{background:rgba(249,115,22,.14);border-color:rgba(249,115,22,.25)}
+.item-cell.cell-red{background:rgba(239,68,68,.14);border-color:rgba(239,68,68,.25)}
+.item-cell.cell-empty{background:rgba(30,41,59,.45);border-color:rgba(51,65,85,.3)}
 .cell-edit-badge{
   position:absolute;top:5px;right:5px;
-  background:rgba(30,41,59,.9);border:1px solid #334155;
-  color:#64748b;font-size:9px;border-radius:4px;
-  padding:1px 5px;opacity:0;transition:.15s;
+  background:rgba(15,23,42,.92);border:1px solid #334155;
+  color:#94a3b8;font-size:9px;border-radius:4px;
+  padding:1px 5px;opacity:0;transition:.15s;z-index:3;
 }
 .item-cell:hover .cell-edit-badge{opacity:1;color:#f97316;border-color:#f97316}
-.cell-indicator{position:absolute;top:0;left:0;right:0;height:3px;border-radius:8px 8px 0 0}
+.cell-indicator{position:absolute;top:0;left:0;right:0;height:3px;border-radius:10px 10px 0 0}
 .ind-green{background:#10b981}.ind-orange{background:#f97316}.ind-red{background:#ef4444}.ind-empty{background:#334155}
-.cell-img{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:5px;background:rgba(0,0,0,.2)}
+
+/* Real Product Image in Grid */
+.cell-img{
+  width:54px;height:54px;border-radius:10px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:6px;background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.08);position:relative;flex-shrink:0;
+}
+.cell-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .2s ease;
+}
+.item-cell:hover .cell-img img{transform:scale(1.1)}
+.cell-img-empty{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  color:#475569;font-size:22px;
+}
+
 .cell-name{font-size:10px;font-weight:600;color:#e2e8f0;text-align:center;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
-.cell-barcode{font-size:9px;color:#64748b;margin-bottom:3px;font-family:monospace}
+.cell-barcode{font-size:9px;color:#64748b;margin-bottom:4px;font-family:monospace}
 .cell-stock-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:auto}
-.badge-green{background:rgba(16,185,129,.3);color:#34d399}
-.badge-orange{background:rgba(249,115,22,.3);color:#fb923c}
-.badge-red{background:rgba(239,68,68,.3);color:#f87171}
-.badge-empty{background:rgba(51,65,85,.4);color:#64748b}
+.badge-green{background:rgba(16,185,129,.25);color:#34d399}
+.badge-orange{background:rgba(249,115,22,.25);color:#fb923c}
+.badge-red{background:rgba(239,68,68,.25);color:#f87171}
+.badge-empty{background:rgba(51,65,85,.35);color:#64748b}
 
 /* ── Item Edit Modal ── */
-#edit-item-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(3px);z-index:1200;align-items:center;justify-content:center}
+#edit-item-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:1200;align-items:center;justify-content:center}
 #edit-item-overlay.show{display:flex}
 #edit-item-modal{
   background:#1e293b;border:1px solid #334155;
-  border-radius:16px;width:min(400px,96vw);
-  box-shadow:0 20px 60px rgba(0,0,0,.7);overflow:hidden;
+  border-radius:18px;width:min(460px,96vw);
+  box-shadow:0 24px 68px rgba(0,0,0,.8);overflow:hidden;
 }
 #edit-item-modal h4{font-size:14px;font-weight:700;color:#f97316;padding:16px 20px 10px;border-bottom:1px solid #334155}
-.ei-body{padding:16px 20px}
+.ei-body{padding:16px 20px;max-height:75vh;overflow-y:auto}
 .ei-row{display:flex;gap:10px;margin-bottom:12px}
 .ei-group{flex:1}
 .ei-group label{font-size:11px;color:#94a3b8;display:block;margin-bottom:4px}
@@ -205,10 +222,22 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
   border-radius:7px;color:#e2e8f0;font-size:12px;outline:none;transition:.15s;
 }
 .ei-group input:focus{border-color:#f97316}
-.emoji-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
-.emo-btn{width:32px;height:32px;border-radius:6px;border:1px solid #334155;background:#0f172a;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.12s}
-.emo-btn:hover{border-color:#f97316;transform:scale(1.15)}
-.emo-btn.active{border-color:#f97316;background:rgba(249,115,22,.2)}
+
+/* Real Image Preset Picker */
+.img-preset-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:6px;
+  max-height:130px;overflow-y:auto;padding:6px;
+  background:#0f172a;border:1px solid #334155;border-radius:8px;margin-bottom:8px;
+}
+.img-preset-btn{
+  width:100%;aspect-ratio:1;border-radius:6px;border:2px solid #334155;
+  background:#1e293b;cursor:pointer;overflow:hidden;padding:0;
+  transition:.15s;position:relative;
+}
+.img-preset-btn img{width:100%;height:100%;object-fit:cover;display:block}
+.img-preset-btn:hover{border-color:#f97316;transform:scale(1.06)}
+.img-preset-btn.active{border-color:#f97316;box-shadow:0 0 0 2px rgba(249,115,22,.5)}
+
 .empty-toggle{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:12px;color:#94a3b8;cursor:pointer}
 .empty-toggle input{accent-color:#f97316;width:15px;height:15px;cursor:pointer}
 .ei-actions{display:flex;gap:8px;justify-content:flex-end;padding:12px 20px;border-top:1px solid #334155}
@@ -217,14 +246,22 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
 #cell-tooltip{
   display:none;position:fixed;z-index:1300;pointer-events:none;
   background:rgba(10,15,30,.97);border:1px solid #f97316;
-  border-radius:12px;padding:13px 15px;min-width:190px;
-  box-shadow:0 12px 40px rgba(0,0,0,.7);
+  border-radius:12px;padding:12px 14px;min-width:210px;
+  box-shadow:0 12px 40px rgba(0,0,0,.7);backdrop-filter:blur(8px);
 }
-#cell-tooltip h5{color:#f97316;font-size:13px;margin-bottom:7px}
+.tt-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.tt-img-box{
+  width:48px;height:48px;border-radius:8px;overflow:hidden;
+  background:#1e293b;flex-shrink:0;border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+}
+.tt-img-box img{width:100%;height:100%;object-fit:cover;display:block}
+.tt-title{flex:1;overflow:hidden}
+.tt-title h5{color:#f97316;font-size:13px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt-title .tt-bc-sub{font-size:10px;color:#64748b;font-family:monospace}
 .tt-row{display:flex;justify-content:space-between;gap:10px;margin-bottom:4px;font-size:11px}
 .tt-key{color:#64748b}.tt-val{color:#e2e8f0;font-weight:600}
-.tt-img{font-size:30px;text-align:center;margin-bottom:7px}
-.tt-bar-wrap{height:4px;border-radius:3px;background:#1e293b;margin-top:5px;overflow:hidden}
+.tt-bar-wrap{height:4px;border-radius:3px;background:#1e293b;margin-top:6px;overflow:hidden}
 .tt-bar-fill{height:100%;border-radius:3px;transition:.3s}
 
 /* ── Legend ── */
@@ -356,9 +393,13 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
             <input type="number" id="ei-maxstock" min="1" value="100"/>
           </div>
         </div>
+        <div class="ei-group" style="margin-bottom:10px">
+          <label style="margin-bottom:5px">เลือกรูปภาพสินค้าตัวอย่าง</label>
+          <div class="img-preset-grid" id="img-preset-grid"></div>
+        </div>
         <div class="ei-group">
-          <label style="margin-bottom:7px">Emoji / ไอคอน</label>
-          <div class="emoji-row" id="emoji-row"></div>
+          <label>URL รูปภาพสินค้า</label>
+          <input type="text" id="ei-image" placeholder="https://..."/>
         </div>
       </div>
     </div>
@@ -371,9 +412,15 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
 
 <!-- Hover tooltip -->
 <div id="cell-tooltip">
-  <div class="tt-img" id="tt-img"></div>
-  <h5 id="tt-name"></h5>
-  <div class="tt-row"><span class="tt-key">บาร์โค้ด</span><span class="tt-val" id="tt-bc"></span></div>
+  <div class="tt-header">
+    <div class="tt-img-box" id="tt-img-box">
+      <img id="tt-img" src="" alt="สินค้า"/>
+    </div>
+    <div class="tt-title">
+      <h5 id="tt-name"></h5>
+      <span class="tt-bc-sub" id="tt-bc"></span>
+    </div>
+  </div>
   <div class="tt-row"><span class="tt-key">สต็อก</span><span class="tt-val" id="tt-stock"></span></div>
   <div class="tt-row"><span class="tt-key">สถานะ</span><span class="tt-val" id="tt-status"></span></div>
   <div class="tt-bar-wrap"><div class="tt-bar-fill" id="tt-bar"></div></div>
@@ -391,7 +438,7 @@ body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;padding:12p
 
 <script>
 /* ════════════════════════════════════════
-   CONSTANTS
+   CONSTANTS & REAL PRODUCT CATALOG
 ════════════════════════════════════════ */
 const PALETTE = [
   {hex:'#f97316',grad:'linear-gradient(135deg,#f97316,#fb923c)'},
@@ -406,24 +453,29 @@ const PALETTE = [
   {hex:'#f43f5e',grad:'linear-gradient(135deg,#f43f5e,#fb7185)'},
 ];
 
-const EMOJIS = ['💧','🍞','🥛','🥚','🍜','🥤','🍫','🍪','🫙','🫒','🧺','🧴','🧼','🦷','🧻','🗑️','🌾','🐟','🍬','🧂','🥩','🍎','🍊','🧃','☕'];
 const PRODUCTS = [
-  {name:'น้ำดื่ม 600ml',emoji:'💧',maxStock:200},
-  {name:'ขนมปังโฮลวีท',emoji:'🍞',maxStock:80},
-  {name:'นมสด UHT',emoji:'🥛',maxStock:120},
-  {name:'ไข่ไก่ เบอร์2',emoji:'🥚',maxStock:100},
-  {name:'บะหมี่กึ่งฯ',emoji:'🍜',maxStock:150},
-  {name:'น้ำอัดลม',emoji:'🥤',maxStock:180},
-  {name:'ช็อกโกแลต',emoji:'🍫',maxStock:60},
-  {name:'คุกกี้',emoji:'🍪',maxStock:90},
-  {name:'ซอสปรุงรส',emoji:'🫙',maxStock:70},
-  {name:'น้ำมันพืช 1L',emoji:'🫒',maxStock:50},
-  {name:'ผงซักฟอก',emoji:'🧺',maxStock:40},
-  {name:'แชมพู',emoji:'🧴',maxStock:55},
-  {name:'สบู่',emoji:'🧼',maxStock:80},
-  {name:'ยาสีฟัน',emoji:'🦷',maxStock:65},
-  {name:'กระดาษทิชชู่',emoji:'🧻',maxStock:100},
+  {name:'น้ำดื่ม 600ml', image:'https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80', maxStock:200},
+  {name:'ขนมปังโฮลวีท', image:'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80', maxStock:80},
+  {name:'นมสด UHT', image:'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80', maxStock:120},
+  {name:'ไข่ไก่สด', image:'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80', maxStock:100},
+  {name:'บะหมี่กึ่งฯ', image:'https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80', maxStock:150},
+  {name:'น้ำอัดลม', image:'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80', maxStock:180},
+  {name:'ช็อกโกแลต', image:'https://images.unsplash.com/photo-1511381939415-e44015466834?w=200&auto=format&fit=crop&q=80', maxStock:60},
+  {name:'คุกกี้เนยสด', image:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&auto=format&fit=crop&q=80', maxStock:90},
+  {name:'ซอสปรุงรส', image:'https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format&fit=crop&q=80', maxStock:70},
+  {name:'น้ำมันพืช 1L', image:'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&auto=format&fit=crop&q=80', maxStock:50},
+  {name:'ผงซักฟอก', image:'https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&auto=format&fit=crop&q=80', maxStock:40},
+  {name:'แชมพูสระผม', image:'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=200&auto=format&fit=crop&q=80', maxStock:55},
+  {name:'สบู่ก้อน', image:'https://images.unsplash.com/photo-1607006310492-c07a0c8b6b23?w=200&auto=format&fit=crop&q=80', maxStock:80},
+  {name:'ยาสีฟัน', image:'https://images.unsplash.com/photo-1559591937-e1032c1c9ff5?w=200&auto=format&fit=crop&q=80', maxStock:65},
+  {name:'กระดาษทิชชู่', image:'https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=200&auto=format&fit=crop&q=80', maxStock:100},
+  {name:'กาแฟสำเร็จรูป', image:'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&auto=format&fit=crop&q=80', maxStock:75},
+  {name:'ข้าวสารหอมมะลิ', image:'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=200&auto=format&fit=crop&q=80', maxStock:45},
+  {name:'น้ำส้มคั้นสด', image:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=200&auto=format&fit=crop&q=80', maxStock:90},
+  {name:'แอปเปิ้ลแดง', image:'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=200&auto=format&fit=crop&q=80', maxStock:110},
+  {name:'ส้มสายน้ำผึ้ง', image:'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=200&auto=format&fit=crop&q=80', maxStock:110}
 ];
+
 const PRESETS = [
   {label:'2×3',rows:2,cols:3},{label:'3×4',rows:3,cols:4},
   {label:'4×4',rows:4,cols:4},{label:'2×6',rows:2,cols:6},
@@ -446,49 +498,53 @@ let editItemIdx = null;   // item index being edited
    DATA HELPERS
 ════════════════════════════════════════ */
 function randItem(i){
-  const p=PRODUCTS[i%PRODUCTS.length];
-  const empty=Math.random()<0.1;
+  const p = PRODUCTS[i % PRODUCTS.length];
+  const empty = Math.random() < 0.1;
   return {
-    name:p.name, emoji:p.emoji,
-    barcode:'8'+String(Math.floor(Math.random()*100000000000)).padStart(11,'0'),
-    stock:empty?0:Math.floor(Math.random()*p.maxStock)+1,
-    maxStock:p.maxStock, empty
+    name: p.name,
+    image: p.image,
+    barcode: '8' + String(Math.floor(Math.random() * 100000000000)).padStart(11, '0'),
+    stock: empty ? 0 : Math.floor(Math.random() * p.maxStock) + 1,
+    maxStock: p.maxStock,
+    empty
   };
 }
-function generateItems(r,c){
-  const a=[];
-  for(let i=0;i<r*c;i++) a.push(randItem(i));
+
+function generateItems(r, c){
+  const a = [];
+  for(let i = 0; i < r * c; i++) a.push(randItem(i));
   return a;
 }
+
 function stockClass(item){
-  if(item.empty||item.stock===0) return {cell:'cell-empty',badge:'badge-empty',ind:'ind-empty',status:'ว่าง',color:'#334155'};
-  const p=item.stock/item.maxStock;
-  if(p>0.5) return {cell:'cell-green',badge:'badge-green',ind:'ind-green',status:'เพียงพอ',color:'#10b981'};
-  if(p>0.2) return {cell:'cell-orange',badge:'badge-orange',ind:'ind-orange',status:'ปานกลาง',color:'#f97316'};
+  if(item.empty || item.stock === 0) return {cell:'cell-empty',badge:'badge-empty',ind:'ind-empty',status:'ว่าง',color:'#334155'};
+  const p = item.stock / item.maxStock;
+  if(p > 0.5) return {cell:'cell-green',badge:'badge-green',ind:'ind-green',status:'เพียงพอ',color:'#10b981'};
+  if(p > 0.2) return {cell:'cell-orange',badge:'badge-orange',ind:'ind-orange',status:'ปานกลาง',color:'#f97316'};
   return {cell:'cell-red',badge:'badge-red',ind:'ind-red',status:'⚠️ ต่ำ',color:'#ef4444'};
 }
 
 /* ════════════════════════════════════════
    COLLISION
 ════════════════════════════════════════ */
-function rectOf(el){return{x:parseFloat(el.style.left)||0,y:parseFloat(el.style.top)||0,w:el.offsetWidth,h:el.offsetHeight}}
-function overlaps(a,b){return!(a.x+a.w<=b.x||b.x+b.w<=a.x||a.y+a.h<=b.y||b.y+b.h<=a.y)}
+function rectOf(el){ return {x:parseFloat(el.style.left)||0, y:parseFloat(el.style.top)||0, w:el.offsetWidth, h:el.offsetHeight}; }
+function overlaps(a, b){ return !(a.x + a.w <= b.x || b.x + b.w <= a.x || a.y + a.h <= b.y || b.y + b.h <= a.y); }
 function resolveCollision(el){
-  const wW=wrap.clientWidth,wH=wrap.clientHeight;
-  let r=rectOf(el);
-  r.x=Math.max(0,Math.min(r.x,wW-r.w)); r.y=Math.max(0,Math.min(r.y,wH-r.h));
-  el.style.left=r.x+'px'; el.style.top=r.y+'px';
+  const wW = wrap.clientWidth, wH = wrap.clientHeight;
+  let r = rectOf(el);
+  r.x = Math.max(0, Math.min(r.x, wW - r.w)); r.y = Math.max(0, Math.min(r.y, wH - r.h));
+  el.style.left = r.x + 'px'; el.style.top = r.y + 'px';
   for(const s of squares){
-    if(s.el===el) continue;
-    const o=rectOf(s.el);
-    if(overlaps(r,o)){
-      s.el.classList.add('collision'); setTimeout(()=>s.el.classList.remove('collision'),450);
-      const oL=(r.x+r.w)-o.x,oR=(o.x+o.w)-r.x,oT=(r.y+r.h)-o.y,oB=(o.y+o.h)-r.y;
-      const mn=Math.min(oL,oR,oT,oB);
-      if(mn===oL)r.x=o.x-r.w; else if(mn===oR)r.x=o.x+o.w;
-      else if(mn===oT)r.y=o.y-r.h; else r.y=o.y+o.h;
-      r.x=Math.max(0,Math.min(r.x,wW-r.w)); r.y=Math.max(0,Math.min(r.y,wH-r.h));
-      el.style.left=r.x+'px'; el.style.top=r.y+'px';
+    if(s.el === el) continue;
+    const o = rectOf(s.el);
+    if(overlaps(r, o)){
+      s.el.classList.add('collision'); setTimeout(() => s.el.classList.remove('collision'), 450);
+      const oL = (r.x + r.w) - o.x, oR = (o.x + o.w) - r.x, oT = (r.y + r.h) - o.y, oB = (o.y + o.h) - r.y;
+      const mn = Math.min(oL, oR, oT, oB);
+      if(mn === oL) r.x = o.x - r.w; else if(mn === oR) r.x = o.x + o.w;
+      else if(mn === oT) r.y = o.y - r.h; else r.y = o.y + o.h;
+      r.x = Math.max(0, Math.min(r.x, wW - r.w)); r.y = Math.max(0, Math.min(r.y, wH - r.h));
+      el.style.left = r.x + 'px'; el.style.top = r.y + 'px';
     }
   }
 }
@@ -497,45 +553,46 @@ function resolveCollision(el){
    DRAG & RESIZE
 ════════════════════════════════════════ */
 function makeDraggable(el){
-  let ox,oy,sx,sy,dragging=false;
-  el.addEventListener('mousedown',e=>{
+  let ox, oy, sx, sy, dragging = false;
+  el.addEventListener('mousedown', e => {
     if(e.target.closest('.delete-btn,.edit-btn,.resize-handle')) return;
-    dragging=true; ox=e.clientX-parseFloat(el.style.left||0); oy=e.clientY-parseFloat(el.style.top||0);
-    sx=e.clientX; sy=e.clientY; el.classList.add('dragging'); e.preventDefault();
+    dragging = true; ox = e.clientX - parseFloat(el.style.left || 0); oy = e.clientY - parseFloat(el.style.top || 0);
+    sx = e.clientX; sy = e.clientY; el.classList.add('dragging'); e.preventDefault();
   });
-  document.addEventListener('mousemove',e=>{
+  document.addEventListener('mousemove', e => {
     if(!dragging) return;
-    let nx=Math.max(0,Math.min(e.clientX-ox,wrap.clientWidth-el.offsetWidth));
-    let ny=Math.max(0,Math.min(e.clientY-oy,wrap.clientHeight-el.offsetHeight));
-    el.style.left=nx+'px'; el.style.top=ny+'px';
+    let nx = Math.max(0, Math.min(e.clientX - ox, wrap.clientWidth - el.offsetWidth));
+    let ny = Math.max(0, Math.min(e.clientY - oy, wrap.clientHeight - el.offsetHeight));
+    el.style.left = nx + 'px'; el.style.top = ny + 'px';
   });
-  document.addEventListener('mouseup',e=>{
+  document.addEventListener('mouseup', e => {
     if(!dragging) return;
-    dragging=false; el.classList.remove('dragging'); resolveCollision(el);
-    el._dragged=Math.hypot(e.clientX-sx,e.clientY-sy)>6;
-    setTimeout(()=>el._dragged=false,80);
+    dragging = false; el.classList.remove('dragging'); resolveCollision(el);
+    el._dragged = Math.hypot(e.clientX - sx, e.clientY - sy) > 6;
+    setTimeout(() => el._dragged = false, 80);
   });
   // touch
-  el.addEventListener('touchstart',e=>{
+  el.addEventListener('touchstart', e => {
     if(e.target.closest('.resize-handle')) return;
-    const t=e.touches[0]; ox=t.clientX-parseFloat(el.style.left||0); oy=t.clientY-parseFloat(el.style.top||0);
-    dragging=true; e.preventDefault();
-  },{passive:false});
-  document.addEventListener('touchmove',e=>{
+    const t = e.touches[0]; ox = t.clientX - parseFloat(el.style.left || 0); oy = t.clientY - parseFloat(el.style.top || 0);
+    dragging = true; e.preventDefault();
+  }, {passive:false});
+  document.addEventListener('touchmove', e => {
     if(!dragging) return;
-    const t=e.touches[0];
-    el.style.left=Math.max(0,Math.min(t.clientX-ox,wrap.clientWidth-el.offsetWidth))+'px';
-    el.style.top =Math.max(0,Math.min(t.clientY-oy,wrap.clientHeight-el.offsetHeight))+'px';
-  },{passive:false});
-  document.addEventListener('touchend',()=>{ if(!dragging) return; dragging=false; resolveCollision(el); });
+    const t = e.touches[0];
+    el.style.left = Math.max(0, Math.min(t.clientX - ox, wrap.clientWidth - el.offsetWidth)) + 'px';
+    el.style.top  = Math.max(0, Math.min(t.clientY - oy, wrap.clientHeight - el.offsetHeight)) + 'px';
+  }, {passive:false});
+  document.addEventListener('touchend', () => { if(!dragging) return; dragging = false; resolveCollision(el); });
 }
-function makeResizable(handle,el){
-  handle.addEventListener('mousedown',e=>{
-    let sx=e.clientX,sy=e.clientY,sw=el.offsetWidth,sh=el.offsetHeight;
-    el._resizing=true; e.stopPropagation(); e.preventDefault();
-    const onMove=ev=>{ el.style.width=Math.max(90,sw+(ev.clientX-sx))+'px'; el.style.height=Math.max(80,sh+(ev.clientY-sy))+'px'; resolveCollision(el); };
-    const onUp=()=>{ el._resizing=false; document.removeEventListener('mousemove',onMove); document.removeEventListener('mouseup',onUp); };
-    document.addEventListener('mousemove',onMove); document.addEventListener('mouseup',onUp);
+
+function makeResizable(handle, el){
+  handle.addEventListener('mousedown', e => {
+    let sx = e.clientX, sy = e.clientY, sw = el.offsetWidth, sh = el.offsetHeight;
+    el._resizing = true; e.stopPropagation(); e.preventDefault();
+    const onMove = ev => { el.style.width = Math.max(90, sw + (ev.clientX - sx)) + 'px'; el.style.height = Math.max(80, sh + (ev.clientY - sy)) + 'px'; resolveCollision(el); };
+    const onUp = () => { el._resizing = false; document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); };
+    document.addEventListener('mousemove', onMove); document.addEventListener('mouseup', onUp);
   });
 }
 
@@ -543,93 +600,90 @@ function makeResizable(handle,el){
    SQUARE DOM UPDATE
 ════════════════════════════════════════ */
 function updateSquareDom(sq){
-  sq.el.style.background=sq.grad;
-  sq.el.querySelector('.sq-label').textContent=`${sq.name}\n${sq.rows}×${sq.cols}`;
-  const badge=sq.el.querySelector('.sq-badge');
-  badge.innerHTML='';
-  sq.items.slice(0,6).forEach(item=>{
-    const d=document.createElement('div');
-    d.className='sq-dot'; d.style.background=stockClass(item).color;
+  sq.el.style.background = sq.grad;
+  sq.el.querySelector('.sq-label').textContent = `${sq.name}\n${sq.rows}×${sq.cols}`;
+  const badge = sq.el.querySelector('.sq-badge');
+  badge.innerHTML = '';
+  sq.items.slice(0, 6).forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'sq-dot'; d.style.background = stockClass(item).color;
     badge.appendChild(d);
   });
 }
 
 /* ════════════════════════════════════════
-   PLACE SQUARE (called after modal confirm)
+   PLACE SQUARE
 ════════════════════════════════════════ */
 function placeSquare(cfg){
-  const id=nextId++;
-  const el=document.createElement('div');
-  el.className='sq';
-  el.style.width='140px'; el.style.height='130px';
-  const n=squares.length;
-  el.style.left=(20+n%7*26)+'px'; el.style.top=(20+n%7*26)+'px';
-  el.innerHTML=`
+  const id = nextId++;
+  const el = document.createElement('div');
+  el.className = 'sq';
+  el.style.width = '140px'; el.style.height = '130px';
+  const n = squares.length;
+  el.style.left = (20 + n % 7 * 26) + 'px'; el.style.top = (20 + n % 7 * 26) + 'px';
+  el.innerHTML = `
     <button class="delete-btn" title="ลบ">✕</button>
     <button class="edit-btn" title="ตั้งค่า">⚙️ ตั้งค่า</button>
     <span class="sq-label"></span>
     <div class="sq-badge"></div>
     <div class="resize-handle"></div>
   `;
-  const sq={id,el,name:cfg.name,hex:cfg.hex,grad:cfg.grad,rows:cfg.rows,cols:cfg.cols,gap:cfg.gap,items:generateItems(cfg.rows,cfg.cols)};
+  const sq = {id, el, name:cfg.name, hex:cfg.hex, grad:cfg.grad, rows:cfg.rows, cols:cfg.cols, gap:cfg.gap, items:generateItems(cfg.rows, cfg.cols)};
   squares.push(sq);
   wrap.appendChild(el);
-  sqCountEl.textContent=`ช่อง: ${squares.length}`;
+  sqCountEl.textContent = `ช่อง: ${squares.length}`;
   updateSquareDom(sq);
   resolveCollision(el);
 
   // apply current search
-  const q=document.getElementById('search-inp').value.trim();
-  if(q){ const hit=sqMatchesQuery(sq,q); el.classList.toggle('match',hit); el.classList.toggle('dimmed',!hit); }
+  const q = document.getElementById('search-inp').value.trim();
+  if(q){ const hit = sqMatchesQuery(sq, q); el.classList.toggle('match', hit); el.classList.toggle('dimmed', !hit); }
 
   // delete
-  el.querySelector('.delete-btn').addEventListener('click',e=>{
+  el.querySelector('.delete-btn').addEventListener('click', e => {
     e.stopPropagation(); el.remove();
-    squares=squares.filter(s=>s.id!==id);
-    sqCountEl.textContent=`ช่อง: ${squares.length}`;
+    squares = squares.filter(s => s.id !== id);
+    sqCountEl.textContent = `ช่อง: ${squares.length}`;
   });
 
   // gear button = settings
-  el.querySelector('.edit-btn').addEventListener('click',e=>{
+  el.querySelector('.edit-btn').addEventListener('click', e => {
     e.stopPropagation(); openCreateModal(sq);
   });
 
   // right-click = settings
-  el.addEventListener('contextmenu',e=>{ e.preventDefault(); openCreateModal(sq); });
+  el.addEventListener('contextmenu', e => { e.preventDefault(); openCreateModal(sq); });
 
   // left click = item grid
-  el.addEventListener('click',e=>{
-    if(el._dragged||el._resizing) return;
+  el.addEventListener('click', e => {
+    if(el._dragged || el._resizing) return;
     if(e.target.closest('.delete-btn,.edit-btn,.resize-handle')) return;
     openItemModal(sq);
   });
 
   makeDraggable(el);
-  makeResizable(el.querySelector('.resize-handle'),el);
+  makeResizable(el.querySelector('.resize-handle'), el);
   return sq;
 }
 
 /* ════════════════════════════════════════
-   BUILD COLOR SWATCHES
+   BUILD COLOR SWATCHES & PRESETS
 ════════════════════════════════════════ */
-const swatchContainer=document.getElementById('color-swatches');
-PALETTE.forEach((p,i)=>{
-  const s=document.createElement('div');
-  s.className='cswatch'; s.style.background=p.grad; s.dataset.idx=i;
+const swatchContainer = document.getElementById('color-swatches');
+PALETTE.forEach((p, i) => {
+  const s = document.createElement('div');
+  s.className = 'cswatch'; s.style.background = p.grad; s.dataset.idx = i;
   swatchContainer.appendChild(s);
 });
 
-/* ════════════════════════════════════════
-   BUILD PRESET BUTTONS
-════════════════════════════════════════ */
-const presetRow=document.getElementById('preset-row');
-PRESETS.forEach(p=>{
-  const b=document.createElement('button');
-  b.className='preset-btn'; b.textContent=p.label;
-  b.addEventListener('click',()=>{
-    document.getElementById('inp-rows').value=p.rows;
-    document.getElementById('inp-cols').value=p.cols;
-    document.querySelectorAll('.preset-btn').forEach(x=>x.classList.remove('active'));
+const presetRow = document.getElementById('preset-row');
+PRESETS.forEach(p => {
+  const b = document.createElement('button');
+  b.className = 'preset-btn'; b.textContent = p.label;
+  b.addEventListener('click', () => {
+    document.getElementById('inp-rows').value = p.rows;
+    document.getElementById('inp-cols').value = p.cols;
+    document.querySelectorAll('.preset-btn').forEach(x => x.classList.remove('active'));
     b.classList.add('active'); renderGridPreview();
   });
   presetRow.appendChild(b);
@@ -638,51 +692,52 @@ PRESETS.forEach(p=>{
 /* ════════════════════════════════════════
    CREATE / EDIT MODAL
 ════════════════════════════════════════ */
-const createOverlay=document.getElementById('create-overlay');
-const inpRows=document.getElementById('inp-rows');
-const inpCols=document.getElementById('inp-cols');
-const inpGap =document.getElementById('inp-gap');
-let cmMode='create';   // 'create' | 'edit'
-let cmColorIdx=0;
+const createOverlay = document.getElementById('create-overlay');
+const inpRows = document.getElementById('inp-rows');
+const inpCols = document.getElementById('inp-cols');
+const inpGap  = document.getElementById('inp-gap');
+let cmMode    = 'create';
+let cmColorIdx= 0;
 
 function renderGridPreview(){
-  const r=Math.max(1,+inpRows.value||1);
-  const c=Math.max(1,+inpCols.value||1);
-  const g=Math.max(0,+inpGap.value||0);
-  const pv=document.getElementById('grid-preview');
-  pv.innerHTML='';
-  const grid=document.createElement('div');
-  grid.className='gp-grid';
-  grid.style.cssText=`grid-template-columns:repeat(${c},40px);--gap:${g}px`;
-  const grad=PALETTE[cmColorIdx]?.grad||PALETTE[0].grad;
-  for(let i=0;i<r*c;i++){
-    const cell=document.createElement('div');
-    cell.className='gp-cell'; cell.style.background=grad; cell.style.opacity='.7'; cell.textContent=i+1;
+  const r = Math.max(1, +inpRows.value || 1);
+  const c = Math.max(1, +inpCols.value || 1);
+  const g = Math.max(0, +inpGap.value  || 0);
+  const pv = document.getElementById('grid-preview');
+  pv.innerHTML = '';
+  const grid = document.createElement('div');
+  grid.className = 'gp-grid';
+  grid.style.cssText = `grid-template-columns:repeat(${c},40px);--gap:${g}px`;
+  const grad = PALETTE[cmColorIdx]?.grad || PALETTE[0].grad;
+  for(let i = 0; i < r * c; i++){
+    const cell = document.createElement('div');
+    cell.className = 'gp-cell'; cell.style.background = grad; cell.style.opacity = '.7'; cell.textContent = i + 1;
     grid.appendChild(cell);
   }
   pv.appendChild(grid);
 }
-[inpRows,inpCols,inpGap].forEach(el=>el.addEventListener('input',()=>{
-  document.querySelectorAll('.preset-btn').forEach(x=>x.classList.remove('active'));
+
+[inpRows, inpCols, inpGap].forEach(el => el.addEventListener('input', () => {
+  document.querySelectorAll('.preset-btn').forEach(x => x.classList.remove('active'));
   renderGridPreview();
 }));
 
 // Tab switching
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
   });
 });
 
 // Swatch click
-document.querySelectorAll('.cswatch').forEach(s=>{
-  s.addEventListener('click',()=>{
-    document.querySelectorAll('.cswatch').forEach(x=>x.classList.remove('active'));
-    s.classList.add('active'); cmColorIdx=+s.dataset.idx;
-    document.getElementById('inp-custom-color').value=PALETTE[cmColorIdx].hex;
+document.querySelectorAll('.cswatch').forEach(s => {
+  s.addEventListener('click', () => {
+    document.querySelectorAll('.cswatch').forEach(x => x.classList.remove('active'));
+    s.classList.add('active'); cmColorIdx = +s.dataset.idx;
+    document.getElementById('inp-custom-color').value = PALETTE[cmColorIdx].hex;
     renderGridPreview();
   });
 });
@@ -694,21 +749,18 @@ function openCreateModal(sq){
   document.getElementById('cm-sub').textContent   = sq ? 'แก้ไขชื่อ, สี และ Grid' : 'ตั้งชื่อ, สี และ Grid ก่อนวางลงผัง';
   document.getElementById('btn-cm-done').textContent = sq ? '✔ บันทึก' : '✔ วางช่อง';
 
-  // populate fields
   document.getElementById('inp-name').value = sq ? sq.name : `ช่อง ${nextId}`;
   inpRows.value = sq ? sq.rows : 3;
   inpCols.value = sq ? sq.cols : 4;
   inpGap.value  = sq ? sq.gap  : 6;
 
-  // set color
-  const palIdx = sq ? PALETTE.findIndex(p=>p.hex===sq.hex) : paletteIdx%PALETTE.length;
+  const palIdx = sq ? PALETTE.findIndex(p => p.hex === sq.hex) : paletteIdx % PALETTE.length;
   cmColorIdx = palIdx >= 0 ? palIdx : 0;
-  document.querySelectorAll('.cswatch').forEach((s,i)=>s.classList.toggle('active',i===cmColorIdx));
+  document.querySelectorAll('.cswatch').forEach((s, i) => s.classList.toggle('active', i === cmColorIdx));
   document.getElementById('inp-custom-color').value = PALETTE[cmColorIdx].hex;
 
-  // reset to general tab
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
   document.querySelector('[data-tab="tab-general"]').classList.add('active');
   document.getElementById('tab-general').classList.add('active');
 
@@ -716,36 +768,34 @@ function openCreateModal(sq){
   createOverlay.classList.add('show');
 }
 
-document.getElementById('btn-cm-cancel').addEventListener('click',()=>createOverlay.classList.remove('show'));
-createOverlay.addEventListener('click',e=>{ if(e.target===createOverlay) createOverlay.classList.remove('show'); });
+document.getElementById('btn-cm-cancel').addEventListener('click', () => createOverlay.classList.remove('show'));
+createOverlay.addEventListener('click', e => { if(e.target === createOverlay) createOverlay.classList.remove('show'); });
 
-document.getElementById('btn-cm-done').addEventListener('click',()=>{
+document.getElementById('btn-cm-done').addEventListener('click', () => {
   const name = document.getElementById('inp-name').value.trim() || `ช่อง ${nextId}`;
   const customHex = document.getElementById('inp-custom-color').value;
   const palHex = PALETTE[cmColorIdx]?.hex || '#f97316';
-  const finalHex  = (customHex && customHex!==palHex) ? customHex : palHex;
-  const finalGrad = (customHex && customHex!==palHex)
+  const finalHex  = (customHex && customHex !== palHex) ? customHex : palHex;
+  const finalGrad = (customHex && customHex !== palHex)
     ? `linear-gradient(135deg,${finalHex},${finalHex}bb)`
     : PALETTE[cmColorIdx]?.grad || PALETTE[0].grad;
-  const rows = Math.max(1,+inpRows.value||1);
-  const cols = Math.max(1,+inpCols.value||1);
-  const gap  = Math.max(0,+inpGap.value||0);
+  const rows = Math.max(1, +inpRows.value || 1);
+  const cols = Math.max(1, +inpCols.value || 1);
+  const gap  = Math.max(0, +inpGap.value  || 0);
 
   createOverlay.classList.remove('show');
 
-  if(cmMode==='create'){
+  if(cmMode === 'create'){
     paletteIdx++;
-    placeSquare({name,hex:finalHex,grad:finalGrad,rows,cols,gap});
+    placeSquare({name, hex:finalHex, grad:finalGrad, rows, cols, gap});
   } else {
-    // edit mode — update existing square
-    const gridChanged = rows!==activeSq.rows || cols!==activeSq.cols;
-    activeSq.name=name; activeSq.hex=finalHex; activeSq.grad=finalGrad;
-    activeSq.rows=rows; activeSq.cols=cols; activeSq.gap=gap;
-    if(gridChanged) activeSq.items=generateItems(rows,cols);
+    const gridChanged = rows !== activeSq.rows || cols !== activeSq.cols;
+    activeSq.name = name; activeSq.hex = finalHex; activeSq.grad = finalGrad;
+    activeSq.rows = rows; activeSq.cols = cols; activeSq.gap = gap;
+    if(gridChanged) activeSq.items = generateItems(rows, cols);
     updateSquareDom(activeSq);
-    // re-apply search
-    const q=document.getElementById('search-inp').value.trim();
-    if(q){ const hit=sqMatchesQuery(activeSq,q); activeSq.el.classList.toggle('match',hit); activeSq.el.classList.toggle('dimmed',!hit); }
+    const q = document.getElementById('search-inp').value.trim();
+    if(q){ const hit = sqMatchesQuery(activeSq, q); activeSq.el.classList.toggle('match', hit); activeSq.el.classList.toggle('dimmed', !hit); }
   }
 });
 
@@ -756,133 +806,155 @@ const itemOverlay = document.getElementById('item-overlay');
 const itemGridEl  = document.getElementById('item-grid-el');
 const cellTooltip = document.getElementById('cell-tooltip');
 
-document.getElementById('btn-im-close').addEventListener('click',()=>{ itemOverlay.classList.remove('show'); cellTooltip.style.display='none'; });
-itemOverlay.addEventListener('click',e=>{ if(e.target===itemOverlay){ itemOverlay.classList.remove('show'); cellTooltip.style.display='none'; } });
-document.getElementById('btn-edit-shelf').addEventListener('click',()=>{
+document.getElementById('btn-im-close').addEventListener('click', () => { itemOverlay.classList.remove('show'); cellTooltip.style.display = 'none'; });
+itemOverlay.addEventListener('click', e => { if(e.target === itemOverlay){ itemOverlay.classList.remove('show'); cellTooltip.style.display = 'none'; } });
+document.getElementById('btn-edit-shelf').addEventListener('click', () => {
   itemOverlay.classList.remove('show');
   openCreateModal(activeSq);
 });
 
 function openItemModal(sq){
-  activeSq=sq;
-  document.getElementById('im-title').textContent=`📦 ${sq.name}  (${sq.rows}×${sq.cols})`;
+  activeSq = sq;
+  document.getElementById('im-title').textContent = `📦 ${sq.name}  (${sq.rows}×${sq.cols})`;
   buildItemGrid(sq);
   itemOverlay.classList.add('show');
 }
 
 function buildItemGrid(sq){
-  itemGridEl.innerHTML='';
-  itemGridEl.style.gridTemplateColumns=`repeat(${sq.cols},1fr)`;
-  itemGridEl.style.gap=sq.gap+'px';
-  sq.items.forEach((item,idx)=>{
-    const cls=stockClass(item);
-    const cell=document.createElement('div');
-    cell.className=`item-cell ${cls.cell}`;
-    cell.innerHTML=`
+  itemGridEl.innerHTML = '';
+  itemGridEl.style.gridTemplateColumns = `repeat(${sq.cols}, 1fr)`;
+  itemGridEl.style.gap = sq.gap + 'px';
+  sq.items.forEach((item, idx) => {
+    const cls = stockClass(item);
+    const cell = document.createElement('div');
+    cell.className = `item-cell ${cls.cell}`;
+    
+    const imgHtml = item.empty
+      ? `<div class="cell-img"><div class="cell-img-empty">📦</div></div>`
+      : `<div class="cell-img"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=150&auto=format&fit=crop&q=80'"/></div>`;
+
+    cell.innerHTML = `
       <div class="cell-indicator ${cls.ind}"></div>
       <span class="cell-edit-badge">✏️ แก้ไข</span>
-      <div class="cell-img">${item.emoji}</div>
-      <div class="cell-name">${item.empty?'— ว่าง —':item.name}</div>
-      <div class="cell-barcode">${item.empty?'':item.barcode}</div>
-      <div class="cell-stock-badge ${cls.badge}">${item.empty?'ว่าง':`${item.stock} ชิ้น`}</div>
+      ${imgHtml}
+      <div class="cell-name">${item.empty ? '— ว่าง —' : item.name}</div>
+      <div class="cell-barcode">${item.empty ? '' : item.barcode}</div>
+      <div class="cell-stock-badge ${cls.badge}">${item.empty ? 'ว่าง' : `${item.stock} ชิ้น`}</div>
     `;
-    cell.addEventListener('mouseenter',e=>showTooltip(e,item,cls));
-    cell.addEventListener('mousemove', e=>moveTooltip(e));
-    cell.addEventListener('mouseleave', ()=>cellTooltip.style.display='none');
-    cell.addEventListener('click', ()=>openItemEdit(sq, idx));
+    cell.addEventListener('mouseenter', e => showTooltip(e, item, cls));
+    cell.addEventListener('mousemove',  e => moveTooltip(e));
+    cell.addEventListener('mouseleave', () => cellTooltip.style.display = 'none');
+    cell.addEventListener('click', () => openItemEdit(sq, idx));
     itemGridEl.appendChild(cell);
   });
 }
 
-function showTooltip(e,item,cls){
-  document.getElementById('tt-img').textContent   = item.emoji;
-  document.getElementById('tt-name').textContent  = item.empty?'ว่าง':item.name;
-  document.getElementById('tt-bc').textContent    = item.empty?'—':item.barcode;
-  document.getElementById('tt-stock').textContent = item.empty?'—':`${item.stock}/${item.maxStock}`;
+function showTooltip(e, item, cls){
+  const imgEl = document.getElementById('tt-img');
+  const imgBox = document.getElementById('tt-img-box');
+  if(item.empty){
+    imgEl.style.display = 'none';
+    imgBox.innerHTML = '<span style="font-size:22px;color:#64748b">📦</span>';
+  } else {
+    imgBox.innerHTML = `<img id="tt-img" src="${item.image}" alt="${item.name}"/>`;
+  }
+  document.getElementById('tt-name').textContent  = item.empty ? 'ว่าง' : item.name;
+  document.getElementById('tt-bc').textContent    = item.empty ? '—' : item.barcode;
+  document.getElementById('tt-stock').textContent = item.empty ? '—' : `${item.stock} / ${item.maxStock} ชิ้น`;
   document.getElementById('tt-status').textContent= cls.status;
   document.getElementById('tt-status').style.color= cls.color;
-  const bar=document.getElementById('tt-bar');
-  bar.style.width=(item.empty?0:Math.round(item.stock/item.maxStock*100))+'%';
-  bar.style.background=cls.color;
-  moveTooltip(e); cellTooltip.style.display='block';
+  const bar = document.getElementById('tt-bar');
+  bar.style.width = (item.empty ? 0 : Math.round(item.stock / item.maxStock * 100)) + '%';
+  bar.style.background = cls.color;
+  moveTooltip(e);
+  cellTooltip.style.display = 'block';
 }
+
 function moveTooltip(e){
-  let tx=e.clientX+14, ty=e.clientY-8;
-  const tw=cellTooltip.offsetWidth||200, th=cellTooltip.offsetHeight||150;
-  if(tx+tw>window.innerWidth) tx=e.clientX-tw-10;
-  if(ty+th>window.innerHeight) ty=e.clientY-th-10;
-  cellTooltip.style.left=tx+'px'; cellTooltip.style.top=ty+'px';
+  let tx = e.clientX + 14, ty = e.clientY - 8;
+  const tw = cellTooltip.offsetWidth || 220, th = cellTooltip.offsetHeight || 150;
+  if(tx + tw > window.innerWidth)  tx = e.clientX - tw - 10;
+  if(ty + th > window.innerHeight) ty = e.clientY - th - 10;
+  cellTooltip.style.left = tx + 'px'; cellTooltip.style.top = ty + 'px';
 }
 
 /* ════════════════════════════════════════
-   ITEM EDIT MODAL
+   ITEM EDIT MODAL (WITH REAL IMAGE PRESETS)
 ════════════════════════════════════════ */
 const editItemOverlay = document.getElementById('edit-item-overlay');
+const imgPresetGrid = document.getElementById('img-preset-grid');
 
-// Build emoji picker
-const emojiRow=document.getElementById('emoji-row');
-EMOJIS.forEach(em=>{
-  const b=document.createElement('button');
-  b.className='emo-btn'; b.textContent=em;
-  b.addEventListener('click',()=>{
-    document.querySelectorAll('.emo-btn').forEach(x=>x.classList.remove('active'));
+PRODUCTS.forEach(p => {
+  const b = document.createElement('button');
+  b.className = 'img-preset-btn';
+  b.title = p.name;
+  b.innerHTML = `<img src="${p.image}" alt="${p.name}" loading="lazy"/>`;
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.img-preset-btn').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
+    document.getElementById('ei-image').value = p.image;
+    if(!document.getElementById('ei-name').value.trim() || document.getElementById('ei-name').value.trim() === '— ว่าง —'){
+      document.getElementById('ei-name').value = p.name;
+    }
   });
-  emojiRow.appendChild(b);
+  imgPresetGrid.appendChild(b);
 });
 
-const eiEmpty=document.getElementById('ei-empty');
-eiEmpty.addEventListener('change',()=>{
-  document.getElementById('ei-fields').querySelectorAll('input').forEach(el=>{
-    if(el===eiEmpty) return;
-    el.disabled=eiEmpty.checked;
-    el.style.opacity=eiEmpty.checked?.4:1;
+const eiEmpty = document.getElementById('ei-empty');
+eiEmpty.addEventListener('change', () => {
+  document.getElementById('ei-fields').querySelectorAll('input').forEach(el => {
+    if(el === eiEmpty) return;
+    el.disabled = eiEmpty.checked;
+    el.style.opacity = eiEmpty.checked ? .4 : 1;
   });
-  emojiRow.style.opacity=eiEmpty.checked?.3:1;
+  imgPresetGrid.style.opacity = eiEmpty.checked ? .3 : 1;
+  imgPresetGrid.style.pointerEvents = eiEmpty.checked ? 'none' : 'auto';
 });
 
 function openItemEdit(sq, idx){
-  activeSq=sq; editItemIdx=idx;
-  const item=sq.items[idx];
-  document.getElementById('ei-title').textContent=`✏️ แก้ไขสินค้า — ช่อง ${idx+1}`;
-  eiEmpty.checked=item.empty;
-  document.getElementById('ei-name').value    = item.empty?'':item.name;
-  document.getElementById('ei-barcode').value = item.empty?'':item.barcode;
-  document.getElementById('ei-stock').value   = item.stock;
-  document.getElementById('ei-maxstock').value= item.maxStock;
-  // disable fields if empty
-  document.getElementById('ei-fields').querySelectorAll('input').forEach(el=>{
-    el.disabled=item.empty; el.style.opacity=item.empty?.4:1;
+  activeSq = sq; editItemIdx = idx;
+  const item = sq.items[idx];
+  document.getElementById('ei-title').textContent = `✏️ แก้ไขสินค้า — ช่อง ${idx + 1}`;
+  eiEmpty.checked = item.empty;
+  document.getElementById('ei-name').value     = item.empty ? '' : item.name;
+  document.getElementById('ei-barcode').value  = item.empty ? '' : item.barcode;
+  document.getElementById('ei-stock').value    = item.stock;
+  document.getElementById('ei-maxstock').value = item.maxStock;
+  document.getElementById('ei-image').value    = item.image || '';
+
+  document.getElementById('ei-fields').querySelectorAll('input').forEach(el => {
+    el.disabled = item.empty; el.style.opacity = item.empty ? .4 : 1;
   });
-  emojiRow.style.opacity=item.empty?.3:1;
-  // set active emoji
-  document.querySelectorAll('.emo-btn').forEach(b=>b.classList.toggle('active',b.textContent===item.emoji));
+  imgPresetGrid.style.opacity = item.empty ? .3 : 1;
+  imgPresetGrid.style.pointerEvents = item.empty ? 'none' : 'auto';
+
+  document.querySelectorAll('.img-preset-btn').forEach(b => {
+    const imgEl = b.querySelector('img');
+    b.classList.toggle('active', imgEl && imgEl.src === item.image);
+  });
   editItemOverlay.classList.add('show');
 }
 
-document.getElementById('btn-ei-cancel').addEventListener('click',()=>editItemOverlay.classList.remove('show'));
-editItemOverlay.addEventListener('click',e=>{ if(e.target===editItemOverlay) editItemOverlay.classList.remove('show'); });
+document.getElementById('btn-ei-cancel').addEventListener('click', () => editItemOverlay.classList.remove('show'));
+editItemOverlay.addEventListener('click', e => { if(e.target === editItemOverlay) editItemOverlay.classList.remove('show'); });
 
-document.getElementById('btn-ei-save').addEventListener('click',()=>{
-  if(!activeSq||editItemIdx===null) return;
-  const item=activeSq.items[editItemIdx];
-  item.empty   = eiEmpty.checked;
-  item.name    = document.getElementById('ei-name').value.trim()||item.name;
-  item.barcode = document.getElementById('ei-barcode').value.trim()||item.barcode;
-  item.stock   = Math.max(0,+document.getElementById('ei-stock').value||0);
-  item.maxStock= Math.max(1,+document.getElementById('ei-maxstock').value||1);
-  const activeEmo=document.querySelector('.emo-btn.active');
-  if(activeEmo) item.emoji=activeEmo.textContent;
-  if(item.empty){ item.stock=0; }
+document.getElementById('btn-ei-save').addEventListener('click', () => {
+  if(!activeSq || editItemIdx === null) return;
+  const item = activeSq.items[editItemIdx];
+  item.empty    = eiEmpty.checked;
+  item.name     = document.getElementById('ei-name').value.trim() || (item.empty ? '' : 'สินค้า');
+  item.barcode  = document.getElementById('ei-barcode').value.trim() || item.barcode;
+  item.stock    = Math.max(0, +document.getElementById('ei-stock').value || 0);
+  item.maxStock = Math.max(1, +document.getElementById('ei-maxstock').value || 1);
+  item.image    = document.getElementById('ei-image').value.trim() || PRODUCTS[0].image;
+  if(item.empty){ item.stock = 0; }
 
   editItemOverlay.classList.remove('show');
-  // rebuild grid
   buildItemGrid(activeSq);
-  // update dots on square
   updateSquareDom(activeSq);
-  // re-apply search
-  const q=document.getElementById('search-inp').value.trim();
-  if(q){ const hit=sqMatchesQuery(activeSq,q); activeSq.el.classList.toggle('match',hit); activeSq.el.classList.toggle('dimmed',!hit); }
+
+  const q = document.getElementById('search-inp').value.trim();
+  if(q){ const hit = sqMatchesQuery(activeSq, q); activeSq.el.classList.toggle('match', hit); activeSq.el.classList.toggle('dimmed', !hit); }
 });
 
 /* ════════════════════════════════════════
@@ -891,50 +963,49 @@ document.getElementById('btn-ei-save').addEventListener('click',()=>{
 const searchInp   = document.getElementById('search-inp');
 const searchClear = document.getElementById('btn-search-clear');
 const searchLabel = document.getElementById('search-result-label');
-function norm(s){ return s.toLowerCase().replace(/\s+/g,''); }
-function sqMatchesQuery(sq,q){
+function norm(s){ return s.toLowerCase().replace(/\s+/g, ''); }
+function sqMatchesQuery(sq, q){
   if(!q) return true;
-  const nq=norm(q);
+  const nq = norm(q);
   if(norm(sq.name).includes(nq)) return true;
-  return sq.items.some(it=>!it.empty&&(norm(it.name).includes(nq)||it.barcode.includes(q)));
+  return sq.items.some(it => !it.empty && (norm(it.name).includes(nq) || it.barcode.includes(q)));
 }
 function applySearch(){
-  const q=searchInp.value.trim();
+  const q = searchInp.value.trim();
   if(!q){ clearSearch(); return; }
-  let cnt=0;
-  squares.forEach(sq=>{
-    const hit=sqMatchesQuery(sq,q);
-    sq.el.classList.toggle('match',hit); sq.el.classList.toggle('dimmed',!hit);
+  let cnt = 0;
+  squares.forEach(sq => {
+    const hit = sqMatchesQuery(sq, q);
+    sq.el.classList.toggle('match', hit); sq.el.classList.toggle('dimmed', !hit);
     if(hit) cnt++;
   });
-  searchClear.style.display='block';
-  searchLabel.textContent = cnt===0?'⚠️ ไม่พบสินค้า':`พบ ${cnt} ช่อง`;
-  searchLabel.style.color = cnt===0?'#f87171':'#34d399';
+  searchClear.style.display = 'block';
+  searchLabel.textContent = cnt === 0 ? '⚠️ ไม่พบสินค้า' : `พบ ${cnt} ช่อง`;
+  searchLabel.style.color = cnt === 0 ? '#f87171' : '#34d399';
 }
 function clearSearch(){
-  searchInp.value=''; searchClear.style.display='none'; searchLabel.textContent='';
-  squares.forEach(sq=>sq.el.classList.remove('match','dimmed'));
+  searchInp.value = ''; searchClear.style.display = 'none'; searchLabel.textContent = '';
+  squares.forEach(sq => sq.el.classList.remove('match', 'dimmed'));
 }
-searchInp.addEventListener('input',applySearch);
-searchInp.addEventListener('keydown',e=>{ if(e.key==='Enter') applySearch(); });
-document.getElementById('btn-search-go').addEventListener('click',applySearch);
-searchClear.addEventListener('click',clearSearch);
+searchInp.addEventListener('input', applySearch);
+searchInp.addEventListener('keydown', e => { if(e.key === 'Enter') applySearch(); });
+document.getElementById('btn-search-go').addEventListener('click', applySearch);
+searchClear.addEventListener('click', clearSearch);
 
 /* ════════════════════════════════════════
    TOOLBAR ACTIONS
 ════════════════════════════════════════ */
-document.getElementById('btn-add').addEventListener('click',()=>openCreateModal(null));
-document.getElementById('btn-clear').addEventListener('click',()=>{
-  squares.forEach(s=>s.el.remove()); squares=[]; nextId=1; paletteIdx=0;
-  sqCountEl.textContent='ช่อง: 0'; clearSearch();
+document.getElementById('btn-add').addEventListener('click', () => openCreateModal(null));
+document.getElementById('btn-clear').addEventListener('click', () => {
+  squares.forEach(s => s.el.remove()); squares = []; nextId = 1; paletteIdx = 0;
+  sqCountEl.textContent = 'ช่อง: 0'; clearSearch();
 });
 
 /* ════════════════════════════════════════
    SEED
 ════════════════════════════════════════ */
-// Seed 2 default squares quietly (bypass modal)
-placeSquare({name:'ชั้น A-1',hex:PALETTE[0].hex,grad:PALETTE[0].grad,rows:3,cols:4,gap:6});
-placeSquare({name:'ชั้น B-2',hex:PALETTE[1].hex,grad:PALETTE[1].grad,rows:2,cols:3,gap:6});
+placeSquare({name:'ชั้น A-1', hex:PALETTE[0].hex, grad:PALETTE[0].grad, rows:3, cols:4, gap:6});
+placeSquare({name:'ชั้น B-2', hex:PALETTE[1].hex, grad:PALETTE[1].grad, rows:2, cols:3, gap:6});
 </script>
 </body>
 </html>
