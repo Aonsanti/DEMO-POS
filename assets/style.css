@@ -1,0 +1,362 @@
+/* ======== Global Font Size ======== */
+html, body, [data-testid="stAppViewContainer"] {
+    font-size: 18px !important;
+}
+
+input, textarea, button, label,
+[data-testid="stMarkdownContainer"] p {
+    font-size: 18px !important;
+}
+
+/* ======== Alert Boxes (warning / error / success / info) ======== */
+[data-testid="stAlert"] {
+    border-radius: 8px !important;
+    border: 1px solid transparent !important;
+}
+
+/* Warning */
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentWarning"]) {
+    background-color: #fff3cd !important;
+    border-color: #ffe08a !important;
+}
+[data-testid="stAlertContentWarning"] {
+    color: #7a5c00 !important;
+}
+
+/* Error */
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentError"]) {
+    background-color: #fde2e2 !important;
+    border-color: #f5b5b5 !important;
+}
+[data-testid="stAlertContentError"] {
+    color: #8a1f1f !important;
+}
+
+/* Success */
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentSuccess"]) {
+    background-color: #d9f2df !important;
+    border-color: #a8e0b8 !important;
+}
+[data-testid="stAlertContentSuccess"] {
+    color: #1f6b34 !important;
+}
+
+/* Info */
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"]) {
+    background-color: #d9edf7 !important;
+    border-color: #a9d4e6 !important;
+}
+[data-testid="stAlertContentInfo"] {
+    color: #1a5276 !important;
+}
+
+/* ======== Header ======== */
+[data-testid="stHeader"] {
+    background-color: #ebebeb !important;
+}
+
+[data-testid="stToolbar"] {
+    background-color: transparent !important;
+}
+
+[data-testid="stDecoration"] {
+    background: transparent !important;
+}
+
+[data-testid="stHeader"] svg {
+    fill: #1e1e1e !important;
+}
+
+[data-testid="stHeader"] button {
+    color: #1e1e1e !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stIconMaterial"] {
+    color: #ffffff !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] [data-testid="stIconMaterial"],
+[data-testid="collapsedControl"] [data-testid="stIconMaterial"] {
+    color: #1e1e1e !important;
+}
+
+body > div [data-testid="stIconMaterial"][color^="rgba(250"]:not([data-testid="stSidebar"] *) {
+    color: #1e1e1e !important;
+}
+
+[data-testid="stMainMenuPopover"] {
+    color: #1e1e1e !important;
+}
+
+/* ======== Background / Sidebar ======== */
+[data-testid="stMain"] { 
+    background-color: #ebebeb !important;
+}
+
+[data-testid="stSidebar"],
+[data-testid="stSidebar"] > div:first-child {
+    background-color: #1e1e1e !important;
+}
+
+/* ======== Sidebar Menu Item Spacing ======== */
+[data-testid="stSidebarNavLink"] {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+/* ======== Sidebar Menu Item Text Color ======== */
+[data-testid="stSidebarNavLink"],
+[data-testid="stSidebarNavLink"] span,
+[data-testid="stSidebarNavLink"] p {
+    color: #ffffff !important;
+}
+
+[data-testid="stSidebarNavLink"]:hover {
+    color: #FF7518 !important;
+}
+
+[data-testid="stSidebarNavLink"][aria-current="page"] {
+    color: #FF7518 !important;
+}
+
+/* ======== Sidebar Menu Item - Active Icon Color ======== */
+[data-testid="stSidebarNavLink"][aria-current="page"] [data-testid="stIconMaterial"] {
+    color: #FF7518 !important;
+}
+
+/* ======== Sidebar Active Menu - Left Accent Bar ======== */
+[data-testid="stSidebarNavLinkContainer"]:has(a[aria-current="page"]) {
+    position: relative !important;
+}
+
+[data-testid="stSidebarNavLinkContainer"]:has(a[aria-current="page"])::before {
+    content: "";
+    position: absolute;
+    left: -24px;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: #FF7518;
+}
+
+/* dashboard.css */
+
+/* ======== KPI Cards ======== */
+.kpi-card {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 18px;
+    height: 100%;
+}
+
+.kpi-label {
+    font-size: 13px;
+    color: #555555;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.kpi-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 6px;
+}
+
+.kpi-delta {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* ======== Section Cards ======== */
+.st-key-card_sales,
+.st-key-card_category,
+.st-key-card_top,
+.st-key-card_stock {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 12px;
+}
+
+/* ======== Alert Box ======== */
+.alert-box {
+    margin-top: 14px;
+    background: #fff7ed;
+    border: 1px solid #ffedd5;
+    border-left: 4px solid #FF7518;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #1e1e1e;
+}
+
+/* ======== ตัวอักษรทั่วไป ======== */
+[data-testid="stMain"] h1 {
+    color: #1e1e1e !important;
+    font-weight: 800 !important;
+}
+
+[data-testid="stCaptionContainer"] {
+    color: #555555 !important;
+}
+
+[data-testid="stPlotlyChart"] {
+    background-color: #ffffff !important;
+    border-radius: 8px;
+}
+
+/* ======== ระยะห่างระหว่าง row - กำหนดชัดเจนแทนการบีบเป็น 0 ======== */
+[data-testid="stVerticalBlock"] > [data-testid="stElementContainer"],
+[data-testid="stVerticalBlock"] > [data-testid="stHorizontalBlock"] {
+    margin-bottom: 1.25rem !important;
+}
+
+/* การ์ด KPI แต่ละใบ เว้นระยะห่างจากขอบล่างของ column ตัวเอง */
+[data-testid="column"]:has(.kpi-card) {
+    margin-bottom: 0.5rem;
+}
+
+/* ======== Search Input ======== */
+.st-key-search_input {
+    position: relative;
+}
+
+.st-key-search_input div[data-testid="stTextInputRootElement"] {
+    background-color: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+.st-key-search_input div[data-testid="stTextInputRootElement"]:focus-within {
+    border-color: #FF7518 !important;
+    box-shadow: 0 0 0 1px #FF7518 !important;
+}
+
+.st-key-search_input input {
+    background-color: transparent !important;
+    color: #1e1e1e !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding-right: 48px;
+}
+
+.st-key-search_input input::placeholder {
+    color: #999999 !important;
+}
+
+/* hide - Press Enter to apply */
+.st-key-search_input div[data-testid="InputInstructions"] {
+    display: none !important;
+}
+
+/* Icon */
+.st-key-search_input::after {
+    content: "search";
+    font-family: "Material Symbols Rounded";
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #666;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ======== Text Inputs ======== */
+.st-key-input_token div[data-testid="stTextInputRootElement"],
+.st-key-input_user_id div[data-testid="stTextInputRootElement"] {
+    background-color: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+.st-key-input_token div[data-testid="stTextInputRootElement"]:focus-within,
+.st-key-input_user_id div[data-testid="stTextInputRootElement"]:focus-within {
+    border-color: #FF7518 !important;
+    box-shadow: 0 0 0 1px #FF7518 !important;
+}
+
+.st-key-input_token input,
+.st-key-input_user_id input {
+    background-color: transparent !important;
+    color: #1e1e1e !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.st-key-input_token input::placeholder,
+.st-key-input_user_id input::placeholder {
+    color: #999999 !important;
+}
+
+.st-key-textarea_message div[data-testid="stTextAreaRootElement"] {
+    background-color: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+
+.st-key-textarea_message div[data-testid="stTextAreaRootElement"]:focus-within {
+    border-color: #FF7518 !important;
+    box-shadow: 0 0 0 1px #FF7518 !important;
+}
+
+.st-key-textarea_message textarea {
+    background-color: transparent !important;
+    color: #1e1e1e !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.st-key-textarea_message textarea::placeholder {
+    color: #999999 !important;
+}
+
+/* ======== Search Button ======== */
+.st-key-btn_primary button {
+    background-color: #FF7518 !important;
+    color: #ffffff !important;
+    border: 1px solid #FF7518 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-btn_primary button:hover {
+    background-color: #eb670f !important;
+    border-color: #eb670f !important;
+}
+
+.st-key-btn_primary button:active {
+    background-color: #c7570d !important;
+}
+
+.st-key-btn_secondary button {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #1e1e1e !important;
+    border-radius: 8px !important;
+}
+
+.st-key-btn_secondary button:hover {
+    background-color: #333333 !important;
+    border-color: #333333 !important;
+}
+
+.st-key-btn_secondary button:active {
+    background-color: #000000 !important;
+}
