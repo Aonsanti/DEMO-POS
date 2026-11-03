@@ -1,0 +1,713 @@
+{
+ "warehouses": [
+  {
+   "w": 1340,
+   "h": 800,
+   "shelves": [
+    {
+     "id": 1,
+     "name": "ชั้น A-1",
+     "hex": "#f97316",
+     "grad": "linear-gradient(135deg,#f97316,#fb923c)",
+     "rows": 3,
+     "cols": 4,
+     "gap": 6,
+     "x": 0,
+     "y": 0,
+     "w": 140,
+     "h": 120,
+     "items": [
+      {
+       "name": "น้ำดื่ม 600ml",
+       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "883741107278",
+       "stock": 43,
+       "maxStock": 200,
+       "empty": false
+      },
+      {
+       "name": "ขนมปังโฮลวีท",
+       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80",
+       "barcode": "860253543524",
+       "stock": 62,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "นมสด UHT",
+       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80",
+       "barcode": "842025425785",
+       "stock": 3,
+       "maxStock": 120,
+       "empty": false
+      },
+      {
+       "name": "ไข่ไก่สด",
+       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80",
+       "barcode": "858733420457",
+       "stock": 32,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "บะหมี่กึ่งฯ",
+       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80",
+       "barcode": "813176789166",
+       "stock": 147,
+       "maxStock": 150,
+       "empty": false
+      },
+      {
+       "name": "น้ำอัดลม",
+       "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80",
+       "barcode": "820676201131",
+       "stock": 113,
+       "maxStock": 180,
+       "empty": false
+      },
+      {
+       "name": "ช็อกโกแลต",
+       "image": "https://images.unsplash.com/photo-1511381939415-e44015466834?w=200&auto=format&fit=crop&q=80",
+       "barcode": "875890833919",
+       "stock": 23,
+       "maxStock": 60,
+       "empty": false
+      },
+      {
+       "name": "คุกกี้เนยสด",
+       "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "884379580333",
+       "stock": 0,
+       "maxStock": 90,
+       "empty": true
+      },
+      {
+       "name": "ซอสปรุงรส",
+       "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format&fit=crop&q=80",
+       "barcode": "840148801042",
+       "stock": 2,
+       "maxStock": 70,
+       "empty": false
+      },
+      {
+       "name": "น้ำมันพืช 1L",
+       "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "805390028869",
+       "stock": 0,
+       "maxStock": 50,
+       "empty": true
+      },
+      {
+       "name": "ผงซักฟอก",
+       "image": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&auto=format&fit=crop&q=80",
+       "barcode": "857470260068",
+       "stock": 26,
+       "maxStock": 40,
+       "empty": false
+      },
+      {
+       "name": "แชมพูสระผม",
+       "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=200&auto=format&fit=crop&q=80",
+       "barcode": "897150624216",
+       "stock": 0,
+       "maxStock": 55,
+       "empty": true
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "ชั้น B-2",
+     "hex": "#6366f1",
+     "grad": "linear-gradient(135deg,#6366f1,#818cf8)",
+     "rows": 2,
+     "cols": 3,
+     "gap": 6,
+     "x": 0,
+     "y": 120,
+     "w": 100,
+     "h": 160,
+     "items": [
+      {
+       "name": "น้ำดื่ม 600ml",
+       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "841255198544",
+       "stock": 199,
+       "maxStock": 200,
+       "empty": false
+      },
+      {
+       "name": "ขนมปังโฮลวีท",
+       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80",
+       "barcode": "855950554601",
+       "stock": 41,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "นมสด UHT",
+       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80",
+       "barcode": "829220220619",
+       "stock": 99,
+       "maxStock": 120,
+       "empty": false
+      },
+      {
+       "name": "ไข่ไก่สด",
+       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80",
+       "barcode": "885190802660",
+       "stock": 47,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "บะหมี่กึ่งฯ",
+       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80",
+       "barcode": "870566561805",
+       "stock": 146,
+       "maxStock": 150,
+       "empty": false
+      },
+      {
+       "name": "น้ำอัดลม",
+       "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80",
+       "barcode": "801532135282",
+       "stock": 0,
+       "maxStock": 180,
+       "empty": true
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "name": "ช่อง 2",
+     "hex": "#eab308",
+     "grad": "linear-gradient(135deg,#eab308,#fde047)",
+     "rows": 5,
+     "cols": 5,
+     "gap": 6,
+     "x": 260,
+     "y": 0,
+     "w": 140,
+     "h": 120,
+     "items": [
+      {
+       "name": "น้ำดื่ม 600ml",
+       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "802647619086",
+       "stock": 93,
+       "maxStock": 200,
+       "empty": false
+      },
+      {
+       "name": "ขนมปังโฮลวีท",
+       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80",
+       "barcode": "816855208869",
+       "stock": 45,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "นมสด UHT",
+       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80",
+       "barcode": "867808773743",
+       "stock": 0,
+       "maxStock": 120,
+       "empty": true
+      },
+      {
+       "name": "ไข่ไก่สด",
+       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80",
+       "barcode": "831661684129",
+       "stock": 46,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "บะหมี่กึ่งฯ",
+       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80",
+       "barcode": "841673182041",
+       "stock": 113,
+       "maxStock": 150,
+       "empty": false
+      },
+      {
+       "name": "น้ำอัดลม",
+       "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80",
+       "barcode": "862971621851",
+       "stock": 31,
+       "maxStock": 180,
+       "empty": false
+      },
+      {
+       "name": "ช็อกโกแลต",
+       "image": "https://images.unsplash.com/photo-1511381939415-e44015466834?w=200&auto=format&fit=crop&q=80",
+       "barcode": "892843481137",
+       "stock": 0,
+       "maxStock": 60,
+       "empty": true
+      },
+      {
+       "name": "คุกกี้เนยสด",
+       "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "868143020118",
+       "stock": 87,
+       "maxStock": 90,
+       "empty": false
+      },
+      {
+       "name": "ซอสปรุงรส",
+       "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format&fit=crop&q=80",
+       "barcode": "869476480226",
+       "stock": 6,
+       "maxStock": 70,
+       "empty": false
+      },
+      {
+       "name": "น้ำมันพืช 1L",
+       "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "821544816194",
+       "stock": 50,
+       "maxStock": 50,
+       "empty": false
+      },
+      {
+       "name": "ผงซักฟอก",
+       "image": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&auto=format&fit=crop&q=80",
+       "barcode": "845880999920",
+       "stock": 34,
+       "maxStock": 40,
+       "empty": false
+      },
+      {
+       "name": "แชมพูสระผม",
+       "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=200&auto=format&fit=crop&q=80",
+       "barcode": "857326326215",
+       "stock": 2,
+       "maxStock": 55,
+       "empty": false
+      },
+      {
+       "name": "สบู่ก้อน",
+       "image": "https://images.unsplash.com/photo-1607006310492-c07a0c8b6b23?w=200&auto=format&fit=crop&q=80",
+       "barcode": "889637464780",
+       "stock": 16,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "ยาสีฟัน",
+       "image": "https://images.unsplash.com/photo-1559591937-e1032c1c9ff5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "892177404047",
+       "stock": 50,
+       "maxStock": 65,
+       "empty": false
+      },
+      {
+       "name": "กระดาษทิชชู่",
+       "image": "https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=200&auto=format&fit=crop&q=80",
+       "barcode": "800590930417",
+       "stock": 41,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "กาแฟสำเร็จรูป",
+       "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&auto=format&fit=crop&q=80",
+       "barcode": "803644585260",
+       "stock": 40,
+       "maxStock": 75,
+       "empty": false
+      },
+      {
+       "name": "ข้าวสารหอมมะลิ",
+       "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=200&auto=format&fit=crop&q=80",
+       "barcode": "847317795986",
+       "stock": 3,
+       "maxStock": 45,
+       "empty": false
+      },
+      {
+       "name": "น้ำส้มคั้นสด",
+       "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=200&auto=format&fit=crop&q=80",
+       "barcode": "811819797337",
+       "stock": 0,
+       "maxStock": 90,
+       "empty": true
+      },
+      {
+       "name": "แอปเปิ้ลแดง",
+       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=200&auto=format&fit=crop&q=80",
+       "barcode": "826215053776",
+       "stock": 55,
+       "maxStock": 110,
+       "empty": false
+      },
+      {
+       "name": "ส้มสายน้ำผึ้ง",
+       "image": "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=200&auto=format&fit=crop&q=80",
+       "barcode": "808177946490",
+       "stock": 69,
+       "maxStock": 110,
+       "empty": false
+      },
+      {
+       "name": "น้ำดื่ม 600ml",
+       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "828307396782",
+       "stock": 184,
+       "maxStock": 200,
+       "empty": false
+      },
+      {
+       "name": "ขนมปังโฮลวีท",
+       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80",
+       "barcode": "816172562313",
+       "stock": 67,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "นมสด UHT",
+       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80",
+       "barcode": "842286217780",
+       "stock": 0,
+       "maxStock": 120,
+       "empty": true
+      },
+      {
+       "name": "ไข่ไก่สด",
+       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80",
+       "barcode": "880982799273",
+       "stock": 9,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "บะหมี่กึ่งฯ",
+       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80",
+       "barcode": "813117725354",
+       "stock": 33,
+       "maxStock": 150,
+       "empty": false
+      }
+     ]
+    }
+   ],
+   "id": 1,
+   "name": "คลัง 1"
+  },
+  {
+   "w": 1800,
+   "h": 540,
+   "shelves": [
+    {
+     "id": 1,
+     "name": "ช่อง 1",
+     "hex": "#f97316",
+     "grad": "linear-gradient(135deg,#f97316,#fb923c)",
+     "rows": 6,
+     "cols": 6,
+     "gap": 6,
+     "x": 0,
+     "y": 0,
+     "w": 140,
+     "h": 120,
+     "items": [
+      {
+       "name": "น้ำดื่ม 600ml",
+       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "899234894523",
+       "stock": 0,
+       "maxStock": 200,
+       "empty": true
+      },
+      {
+       "name": "ขนมปังโฮลวีท",
+       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80",
+       "barcode": "865615484743",
+       "stock": 47,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "นมสด UHT",
+       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80",
+       "barcode": "841918285092",
+       "stock": 93,
+       "maxStock": 120,
+       "empty": false
+      },
+      {
+       "name": "ไข่ไก่สด",
+       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80",
+       "barcode": "809927504456",
+       "stock": 12,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "บะหมี่กึ่งฯ",
+       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80",
+       "barcode": "841988064456",
+       "stock": 132,
+       "maxStock": 150,
+       "empty": false
+      },
+      {
+       "name": "น้ำอัดลม",
+       "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80",
+       "barcode": "816654215847",
+       "stock": 104,
+       "maxStock": 180,
+       "empty": false
+      },
+      {
+       "name": "ช็อกโกแลต",
+       "image": "https://images.unsplash.com/photo-1511381939415-e44015466834?w=200&auto=format&fit=crop&q=80",
+       "barcode": "859623070105",
+       "stock": 59,
+       "maxStock": 60,
+       "empty": false
+      },
+      {
+       "name": "คุกกี้เนยสด",
+       "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "846090027348",
+       "stock": 61,
+       "maxStock": 90,
+       "empty": false
+      },
+      {
+       "name": "ซอสปรุงรส",
+       "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format&fit=crop&q=80",
+       "barcode": "815836538226",
+       "stock": 55,
+       "maxStock": 70,
+       "empty": false
+      },
+      {
+       "name": "น้ำมันพืช 1L",
+       "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "886117301131",
+       "stock": 50,
+       "maxStock": 50,
+       "empty": false
+      },
+      {
+       "name": "ผงซักฟอก",
+       "image": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&auto=format&fit=crop&q=80",
+       "barcode": "848655874310",
+       "stock": 28,
+       "maxStock": 40,
+       "empty": false
+      },
+      {
+       "name": "แชมพูสระผม",
+       "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=200&auto=format&fit=crop&q=80",
+       "barcode": "851898936836",
+       "stock": 45,
+       "maxStock": 55,
+       "empty": false
+      },
+      {
+       "name": "สบู่ก้อน",
+       "image": "https://images.unsplash.com/photo-1607006310492-c07a0c8b6b23?w=200&auto=format&fit=crop&q=80",
+       "barcode": "882024045587",
+       "stock": 20,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "ยาสีฟัน",
+       "image": "https://images.unsplash.com/photo-1559591937-e1032c1c9ff5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "822266511136",
+       "stock": 64,
+       "maxStock": 65,
+       "empty": false
+      },
+      {
+       "name": "กระดาษทิชชู่",
+       "image": "https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=200&auto=format&fit=crop&q=80",
+       "barcode": "884416164624",
+       "stock": 83,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "กาแฟสำเร็จรูป",
+       "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&auto=format&fit=crop&q=80",
+       "barcode": "808855096303",
+       "stock": 35,
+       "maxStock": 75,
+       "empty": false
+      },
+      {
+       "name": "ข้าวสารหอมมะลิ",
+       "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=200&auto=format&fit=crop&q=80",
+       "barcode": "808751207994",
+       "stock": 33,
+       "maxStock": 45,
+       "empty": false
+      },
+      {
+       "name": "น้ำส้มคั้นสด",
+       "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=200&auto=format&fit=crop&q=80",
+       "barcode": "815511998710",
+       "stock": 15,
+       "maxStock": 90,
+       "empty": false
+      },
+      {
+       "name": "แอปเปิ้ลแดง",
+       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=200&auto=format&fit=crop&q=80",
+       "barcode": "805554851457",
+       "stock": 98,
+       "maxStock": 110,
+       "empty": false
+      },
+      {
+       "name": "ส้มสายน้ำผึ้ง",
+       "image": "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=200&auto=format&fit=crop&q=80",
+       "barcode": "825337896277",
+       "stock": 0,
+       "maxStock": 110,
+       "empty": true
+      },
+      {
+       "name": "น้ำดื่ม 600ml",
+       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "857859288179",
+       "stock": 188,
+       "maxStock": 200,
+       "empty": false
+      },
+      {
+       "name": "ขนมปังโฮลวีท",
+       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&auto=format&fit=crop&q=80",
+       "barcode": "828980091001",
+       "stock": 67,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "นมสด UHT",
+       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format&fit=crop&q=80",
+       "barcode": "829563311121",
+       "stock": 89,
+       "maxStock": 120,
+       "empty": false
+      },
+      {
+       "name": "ไข่ไก่สด",
+       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format&fit=crop&q=80",
+       "barcode": "854464729524",
+       "stock": 78,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "บะหมี่กึ่งฯ",
+       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=200&auto=format&fit=crop&q=80",
+       "barcode": "813177626782",
+       "stock": 0,
+       "maxStock": 150,
+       "empty": true
+      },
+      {
+       "name": "น้ำอัดลม",
+       "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format&fit=crop&q=80",
+       "barcode": "823423973451",
+       "stock": 64,
+       "maxStock": 180,
+       "empty": false
+      },
+      {
+       "name": "ช็อกโกแลต",
+       "image": "https://images.unsplash.com/photo-1511381939415-e44015466834?w=200&auto=format&fit=crop&q=80",
+       "barcode": "844080432498",
+       "stock": 0,
+       "maxStock": 60,
+       "empty": true
+      },
+      {
+       "name": "คุกกี้เนยสด",
+       "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&auto=format&fit=crop&q=80",
+       "barcode": "892053760787",
+       "stock": 66,
+       "maxStock": 90,
+       "empty": false
+      },
+      {
+       "name": "ซอสปรุงรส",
+       "image": "https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format&fit=crop&q=80",
+       "barcode": "845249421911",
+       "stock": 47,
+       "maxStock": 70,
+       "empty": false
+      },
+      {
+       "name": "น้ำมันพืช 1L",
+       "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "824268249971",
+       "stock": 0,
+       "maxStock": 50,
+       "empty": true
+      },
+      {
+       "name": "ผงซักฟอก",
+       "image": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=200&auto=format&fit=crop&q=80",
+       "barcode": "820823305191",
+       "stock": 0,
+       "maxStock": 40,
+       "empty": true
+      },
+      {
+       "name": "แชมพูสระผม",
+       "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=200&auto=format&fit=crop&q=80",
+       "barcode": "896682131725",
+       "stock": 45,
+       "maxStock": 55,
+       "empty": false
+      },
+      {
+       "name": "สบู่ก้อน",
+       "image": "https://images.unsplash.com/photo-1607006310492-c07a0c8b6b23?w=200&auto=format&fit=crop&q=80",
+       "barcode": "832703258734",
+       "stock": 68,
+       "maxStock": 80,
+       "empty": false
+      },
+      {
+       "name": "ยาสีฟัน",
+       "image": "https://images.unsplash.com/photo-1559591937-e1032c1c9ff5?w=200&auto=format&fit=crop&q=80",
+       "barcode": "848207241777",
+       "stock": 0,
+       "maxStock": 65,
+       "empty": true
+      },
+      {
+       "name": "กระดาษทิชชู่",
+       "image": "https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=200&auto=format&fit=crop&q=80",
+       "barcode": "838915126328",
+       "stock": 90,
+       "maxStock": 100,
+       "empty": false
+      },
+      {
+       "name": "กาแฟสำเร็จรูป",
+       "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=200&auto=format&fit=crop&q=80",
+       "barcode": "893706387387",
+       "stock": 59,
+       "maxStock": 75,
+       "empty": false
+      }
+     ]
+    }
+   ],
+   "id": 2,
+   "name": "Helloworld"
+  }
+ ],
+ "active": 1
+}

@@ -989,13 +989,70 @@ def crawl_and_search_multiple(start_url: str, raw_search_terms: list,
 # ==========================================
 # Action Handler
 # ==========================================
-def execute_search(target_url: str):
-    target_url = normalize_url(target_url)
-    if not target_url or not target_url.strip():
-        st.warning("⚠️ กรุณาระบุ URL เว็บไซต์ที่ต้องการค้นหา")
-        return
-    if not is_valid_url(target_url.strip()):
-        st.error("❌ URL ไม่ถูกต้อง กรุณาระบุรูปแบบโดเมนหรือ URL เช่น https://example.com")
+# ร้านที่ค้นได้ (ล็อคไว้ ใส่ URL เองไม่ได้). 1 ร้าน = 1 ตัวเลือก
+# ค่า = ชื่อร้านใน compare.stores.STORES ซึ่งมีตัวค้นของแต่ละร้าน
+# (7-Eleven ค้นทั้งสินค้าใหม่ + ทุกหน้าโปรโมชั่นพร้อมกัน)
+from compare import stores as store_api
+
+ALLOWED_SITES = {
+    "🏪 7-Eleven": "7-Eleven",
+    "🛒 All Online": "All Online",
+    "🏬 Lotus": "Lotus's",
+    "🛍️ Big C": "Big C",
+}
+
+
+def _to_result(item: str, p: dict, value_terms: list) -> dict:
+    """Store product -> the card dict the result display below expects."""
+    values, parts = {}, [p["name"]]
+    for vt in value_terms:
+        parts.append(vt)
+        if vt.lower() in ("ราคา", "price", "cost") and p["price"] is not None:
+            values[vt] = f"{p['price']:g}"
+            parts.append(values[vt])
+    regular = p.get("regular_price")
+    snippet = " · ".join(filter(None, [
+        p.get("note") or p.get("kind"),
+        f"ราคาปกติ {regular:g}" if regular and regular != p["price"] else "",
+        "ไม่มีราคาในข้อความ ดูที่ลิงก์" if p["price"] is None else ""]))
+    return {"item_query": item, "display": " ".join(parts), "values": values, "url": p["url"],
+            "title": p["name"], "score": int(p.get("relevance", 0) * 100),
+            "confidence": "high" if p.get("relevance", 0) >= 0.9 else "medium",
+            "snippet": snippet or p["name"]}
+
+
+def search_store_items(site_label: str, terms: list, status_text=None) -> dict:
+    store = ALLOWED_SITES[site_label]
+    value_terms = [t for t in terms if is_value_word(t)] or ["ราคา"]
+    item_terms = [t for t in terms if not is_value_word(t)]
+    if not item_terms:
+        raise Exception("กรุณาระบุชื่อสินค้าหรือคำที่ต้องการค้นหาอย่างน้อย 1 รายการ")
+    if status_text:
+        status_text.text(f"⚡ กำลังค้น {len(item_terms)} รายการใน {store} ...")
+
+    data = store_api.search_all(item_terms, [store], limit=8)
+    results, found, errors = [], 0, []
+    for item in item_terms:
+        res = data[item][store]
+        if res["error"]:
+            errors.append(res["error"])
+        if res["products"]:
+            for p in res["products"]:
+                results.append({"item_query": item, "result": _to_result(item, p, value_terms), "title": p["name"]})
+                found += 1
+        else:
+            results.append({"item_query": item, "result": None, "title": item})
+    if errors and not found:   # store blocked / down -> say it instead of "not found"
+        raise Exception(f"{store}: {errors[0]}")
+
+    return {"start_url": store, "search_terms": terms, "item_terms": item_terms, "value_terms": value_terms,
+            "results": results, "found_count": found, "total_items": len(results),
+            "scraped_at": datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
+
+
+def execute_search(site_label: str):
+    if site_label not in ALLOWED_SITES:
+        st.error("❌ ค้นได้เฉพาะร้านที่กำหนดเท่านั้น")
         return
     terms = [w.strip() for w in st.session_state.target_words.split(",") if w.strip()]
     if not terms:
@@ -1005,14 +1062,14 @@ def execute_search(target_url: str):
     progress = st.progress(0.05)
     status = st.empty()
     try:
-        data = crawl_and_search_multiple(target_url.strip(), terms, progress, status)
+        data = search_store_items(site_label, terms, status)
         st.session_state.search_results = data
-        st.session_state.scraper_url = target_url.strip()
+        st.session_state.scraper_url = site_label
 
-        h = {"url": target_url.strip(), "words": st.session_state.target_words,
+        h = {"url": site_label, "words": st.session_state.target_words,
              "time": data["scraped_at"]}
         st.session_state.crawl_history = [
-            x for x in st.session_state.crawl_history if x["url"] != target_url.strip()
+            x for x in st.session_state.crawl_history if x["url"] != site_label
         ]
         st.session_state.crawl_history.insert(0, h)
         if len(st.session_state.crawl_history) > 10:
@@ -1035,6 +1092,15 @@ def set_quick_url(target_u: str):
     st.session_state.scraper_url = target_u
     st.session_state.search_input = target_u
 
+# ── โหมดหน้า: เทียบราคาหลายร้าน (ค่าเริ่มต้น) / ค้นจาก URL เดียว (ของเดิม) ──
+from compare.ui import render as render_compare
+
+_mode = st.segmented_control("โหมด", ["🛒 เทียบราคาหลายร้าน", "🏪 ค้นทีละร้าน"],
+                             default="🛒 เทียบราคาหลายร้าน", key="scraper_mode", label_visibility="collapsed")
+if _mode != "🏪 ค้นทีละร้าน":
+    render_compare()
+    st.stop()
+
 st.markdown("""
 <div class="scraper-header">
     <div class="scraper-badge">⚡ Multi-Item Smart Search Engine</div>
@@ -1043,56 +1109,27 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Preset URL Shortcut Buttons (ใส่เฉพาะ URL ลงในช่องค้นหาทันที) ──
-st.markdown("**🚀 ปุ่มลัดใส่ URL เว็บไซต์ที่ทดสอบแล้ว (คลิกแล้ว URL จะเข้าไปอยู่ในช่องด้านล่างทันที):**")
-sc1, sc2, sc3, sc4 = st.columns(4)
-
-with sc1:
-    st.button("🏪 7-Eleven", key="btn_711", width='stretch',
-              on_click=set_quick_url, args=("https://www.7eleven.co.th/",),
-              help="ใส่ URL https://www.7eleven.co.th/")
-
-with sc2:
-    st.button("🛒 AllOnline", key="btn_allonline", width='stretch',
-              on_click=set_quick_url, args=("https://www.allonline.7eleven.co.th/",),
-              help="ใส่ URL https://www.allonline.7eleven.co.th/")
-
-with sc3:
-    st.button("🏬 Lotus's", key="btn_lotus", width='stretch',
-              on_click=set_quick_url, args=("https://www.lotuss.com/th",),
-              help="ใส่ URL https://www.lotuss.com/th")
-
-
 # ── Supported Websites Information ──
 with st.expander("ℹ️ รายละเอียดเว็บไซต์และสถาปัตยกรรมที่ระบบรองรับ (Supported Web Architecture)", expanded=False):
     st.markdown("""
-    * **เว็บไซต์ที่ผ่านการทดสอบจริงแล้ว 100% (Verified Tested):**
-      * 🏪 **7-Eleven Thailand** (`https://www.7eleven.co.th/`) — เครื่องดื่ม, All Café, ขนม, อาหาร
-      * 🛒 **AllOnline 7-Eleven** (`https://www.allonline.7eleven.co.th/`) — ข้าวสาร, ของใช้ในบ้าน
+    * **ล็อคให้ค้นได้เฉพาะเว็บที่กำหนด (เลือกจากรายการ ใส่ URL เองไม่ได้):**
+      * 🏪 **7-Eleven** (`https://www.7eleven.co.th`) — ค้นทั้งสินค้าใหม่ (เครื่องดื่ม, All Café, เบเกอรี่) และทุกหน้าโปรโมชั่นพร้อมกัน (ราคาโปรอยู่ในรูป ต้องกดลิงก์ดู)
+      * 🛒 **All Online 7-Eleven** (`https://www.allonline.7eleven.co.th/`) — ข้าวสาร, ของใช้ในบ้าน
       * 🏬 **Lotus's Online** (`https://www.lotuss.com/th`) — ห้างสรรพสินค้า, สกินแคร์, อุปโภคบริโภค
-      * 💻 **Advice** (`https://www.advice.co.th/`) — คอมพิวเตอร์, โน้ตบุ๊ก, อุปกรณ์ไอที
-    * **เว็บไซต์ทั่วไปและสถาปัตยกรรมสากลที่รองรับ:**
-      * ⚡ **Single Page Apps (SPA):** Next.js, React, Vue, Nuxt, Svelte (สกัด $O(1)$ State)
-      * 🛍️ **E-Commerce Platforms:** Shopify, WooCommerce, Magento, PrestaShop
-      * 🛡️ **Anti-Bot Bypass:** มีระบบ Stealth Browser ผ่าน WAF/Cloudflare อัตโนมัติ
+      * 🛍️ **Big C Online** (`https://www.bigc.co.th/`) — อุปโภคบริโภค
     """)
 
 st.markdown("---")
 
-col_inp, col_go, col_ref, col_add = st.columns([5, 1.3, 1.3, 1.4])
+col_inp, col_go, col_ref = st.columns([5, 1.3, 1.3])
 with col_inp:
-    url_input = st.text_input("URL", value=st.session_state.scraper_url,
-        placeholder="วาง URL เว็บไซต์ เช่น https://www.7eleven.co.th/ หรือ https://www.lotuss.com/th", autocomplete="off",
-        key="search_input", label_visibility="collapsed")
+    _site = st.selectbox("เว็บไซต์", list(ALLOWED_SITES), key="scraper_site", label_visibility="collapsed")
 with col_go:
     go = st.button("ค้นหา", icon=":material/travel_explore:",
         key="btn_primary", width='stretch')
 with col_ref:
     ref = st.button("รีเฟรช", icon=":material/refresh:",
         key="btn_secondary", width='stretch')
-with col_add:
-    add = st.button("เพิ่ม URL", icon=":material/add_link:",
-        key="btn_add_url", width='stretch')
 
 st.markdown("**🔍 คำค้นหา (ค้นหาได้หลายสินค้าพร้อมกัน คั่นด้วย , )**:")
 words_in = st.text_input("คำค้นหา", value=st.session_state.target_words,
@@ -1111,25 +1148,22 @@ if st.session_state.crawl_history:
                 format_func=lambda x: f"{x} ({next((h['words'] for h in st.session_state.crawl_history if h['url'] == x), '')})",
                 label_visibility="collapsed")
         with hc2:
-            if st.button("โหลด", icon=":material/sync:", width='stretch'):
-                st.session_state.scraper_url = sel
-                execute_search(sel)
-                st.rerun()
+            def _load_history(u=sel):   # callback runs before the selector is drawn, so it may set its value
+                if u not in ALLOWED_SITES:   # old entry from before the store list changed
+                    return
+                st.session_state.scraper_url = u
+                st.session_state.scraper_site = u
+                st.session_state.pending_search = u
+            st.button("โหลด", icon=":material/sync:", width='stretch', on_click=_load_history)
 
-if add:
-    st.session_state.scraper_url = ""
-    st.session_state.target_words = ""
-    st.session_state.search_results = None
-    st.rerun()
+if st.session_state.get("pending_search"):
+    execute_search(st.session_state.pop("pending_search"))
 
 if go:
-    execute_search(url_input)
+    execute_search(_site)
 if ref:
-    t = url_input.strip() or st.session_state.scraper_url
-    if t:
-        execute_search(t)
-    else:
-        st.warning("⚠️ กรุณาระบุ URL ก่อน")
+    store_api._seven_cache.update(at=0.0, items=[])   # refresh = re-read 7-Eleven pages, not the 1-hour cache
+    execute_search(_site)
 
 # ==========================================
 # Result Display (Multi-Card Output)
